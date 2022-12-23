@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "Guns")
 public class Gun
 {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name= "Description")
@@ -44,5 +44,6 @@ public class Gun
 
     @Column(name= "Fact 3")
     private String Fact3;
+
 
 }

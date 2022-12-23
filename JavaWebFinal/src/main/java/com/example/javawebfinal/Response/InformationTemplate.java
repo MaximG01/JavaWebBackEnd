@@ -1,12 +1,14 @@
-/*package com.example.javawebfinal.Response;
+package com.example.javawebfinal.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
  //might not be necessary after all...
 public class InformationTemplate {
     private String Name;
@@ -21,8 +23,5 @@ public class InformationTemplate {
     private String Fact2;
     private String Fact3;
 
-    public InformationTemplate() {
 
-    }
 }
-*/
