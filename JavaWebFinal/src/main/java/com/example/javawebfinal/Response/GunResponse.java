@@ -17,12 +17,12 @@ public class GunResponse {
 
     private long Id;
     private String Name;
-    private GunDescriptionList gunDescriptionList;
+    private GunDescriptionList fk_Gun_Description_List;
 
     public GunResponse (Guns guns)
     {
         Id = guns.getId();
         Name = guns.getTheName();
-        gunDescriptionList = guns.getGunDescriptionList();
+        fk_Gun_Description_List = guns.getFk_Gun_Description_List();
     }
 }

@@ -16,6 +16,6 @@ public class Guns {
         private String TheName;
 
         @OneToOne
-        private GunDescriptionList gunDescriptionList;
+        private GunDescriptionList fk_Gun_Description_List;
 
 }

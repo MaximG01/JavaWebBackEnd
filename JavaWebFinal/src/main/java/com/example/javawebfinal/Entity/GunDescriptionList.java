@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "GUN_DESCRIPTION_LIST")
 public class GunDescriptionList
 {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private long Id;
 
     @Column(name= "description")
