@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Setter
-@Table(name="User")
+@Table(name="Userz")  //"User" does not show up in the table
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
