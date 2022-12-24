@@ -1,3 +1,6 @@
+/*
+
+
 ;
 
 INSERT INTO GunDescriptionList (description, country_of_origin, year_made , creator, rate_of_fire, bullet_type, class, fact1, fact2, fact3)
@@ -6,5 +9,5 @@ VALUES ( 'The AK-47, officially known as the Avtomat Kalashnikova, also known as
          'China is the worlds largest ak-47 producer.', 'It is present on 2 flags (Mozambique and Hezbollah)');
 
 
-
+*/
 

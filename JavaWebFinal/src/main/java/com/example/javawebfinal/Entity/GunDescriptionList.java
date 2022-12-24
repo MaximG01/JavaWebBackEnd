@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-@Table(name = "GunDescriptions")
+@Table(name = "GunDescriptionList")
 public class GunDescriptionList
 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
