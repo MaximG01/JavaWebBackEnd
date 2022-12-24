@@ -1,5 +1,6 @@
 package com.example.javawebfinal.Response;
 
+import com.example.javawebfinal.Entity.GunDescriptionList;
 import com.example.javawebfinal.Entity.Guns;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,12 +17,12 @@ public class GunResponse {
 
     private long Id;
     private String Name;
-    private long GunDescriptionListId;
+    private GunDescriptionList gunDescriptionList;
 
     public GunResponse (Guns guns)
     {
         Id = guns.getId();
         Name = guns.getTheName();
-        GunDescriptionListId = guns.getGunDescriptionListId();
+        gunDescriptionList = guns.getGunDescriptionList();
     }
 }
