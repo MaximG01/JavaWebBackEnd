@@ -15,35 +15,38 @@ public class Gun
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name= "Name")
+    private String THE_NAME;
+
     @Column(name= "Description")
-    private String Description;
+    private String DESCRIPTION;
 
     @Column(name= "Country of Origin")
-    private String Country_of_Origin;
+    private String COUNTRY_OF_ORIGIN;
 
     @Column(name= "Year Made")
-    private String Year_Made;
+    private String YEAR_MADE;
 
     @Column(name= "Creator")
-    private String Creator;
+    private String CREATOR;
 
     @Column(name= "Rate of Fire")
-    private String Rate_of_Fire;
+    private String RATE_OF_FIRE;
 
     @Column(name= "Bullet type")
-    private String Bullet_Type;
+    private String BULLET_TYPE;
 
     @Column(name= "Class")
-    private String _Class;
+    private String THE_CLASS;
 
     @Column(name= "Fact 1")
-    private String Fact1;
+    private String FACT1;
 
     @Column(name= "Fact 2")
-    private String Fact2;
+    private String FACT2;
 
     @Column(name= "Fact 3")
-    private String Fact3;
+    private String FACT3;
 
 
 }
