@@ -24,6 +24,10 @@ public class Loadout {
     @Column(name= "melee_weapon")
     private String MeleeWeapon;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private User user;
+
     //potentially a many to many with Guns/GunDescriptionList
 
     public Loadout(LoadoutRequest loadoutRequest)
@@ -31,7 +35,7 @@ public class Loadout {
         PrimaryWeapon=loadoutRequest.getPrimaryWeapon();
         SecondaryWeapon=loadoutRequest.getSecondaryWeapon();
         MeleeWeapon=loadoutRequest.getMeleeWeapon();
-
+        user=loadoutRequest.getUser();
     }
 
 }

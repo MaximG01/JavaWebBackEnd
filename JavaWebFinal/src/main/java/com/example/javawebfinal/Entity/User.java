@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -19,10 +21,13 @@ public class User {
 
     @Column(name= "last_name")
     private String LastName;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)  //no delete added to user yet...
+    private List<Loadout> loadoutList;
 
     public User (UserRequest userRequest){
         FirstName=userRequest.getFirstName();
         LastName=userRequest.getLastName();
+        loadoutList=userRequest.getLoadoutList();
 
     }
 
