@@ -1,8 +1,11 @@
 package com.example.javawebfinal.Controller;
 
 
-import com.example.javawebfinal.Entity.Gun;
-import com.example.javawebfinal.Response.InformationTemplate;
+import com.example.javawebfinal.Entity.Guns;
+import com.example.javawebfinal.Entity.GunDescriptionList;
+import com.example.javawebfinal.Response.GunDescriptionListResponse;
+import com.example.javawebfinal.Response.GunResponse;
+import com.example.javawebfinal.Service.GunDescriptionListService;
 import com.example.javawebfinal.Service.GunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,20 +16,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/guns/")
+@RequestMapping("/gunLocker/")
 public class GunController {
     @Autowired
-    GunService gunService; //Autowired not working for some reason...
+    GunDescriptionListService gunDescriptionListService;
 
- @GetMapping
-    public List<InformationTemplate> getAllGuns()
+ @GetMapping("/descriptions/")
+    public List<GunDescriptionListResponse> getAllGunDescriptions()
     {
-        List<Gun> guns = gunService.getAllGuns();
+        List<GunDescriptionList> gunDescriptionLists = gunDescriptionListService.getAllGunDescriptions();
 
-        List<InformationTemplate> informationTemplate = new ArrayList<>();
-        guns.forEach(gun -> {
-            informationTemplate.add(new InformationTemplate(gun));
+        List<GunDescriptionListResponse> gunDescriptionListResponse = new ArrayList<>();
+        gunDescriptionLists.forEach(gunDescriptionList -> {
+            gunDescriptionListResponse.add(new GunDescriptionListResponse(gunDescriptionList));
         });
-        return informationTemplate;
+        return gunDescriptionListResponse;
+    }
+    @Autowired
+    GunService gunService;
+    @GetMapping("/guns/")
+    public List<GunResponse> getAllGuns()
+    {
+        List<Guns> guns = gunService.getAllGuns();
+
+        List<GunResponse> gunResponse = new ArrayList<>();
+        guns.forEach(gun -> {
+            gunResponse.add(new GunResponse(gun));
+        });
+        return gunResponse;
     }
 }
