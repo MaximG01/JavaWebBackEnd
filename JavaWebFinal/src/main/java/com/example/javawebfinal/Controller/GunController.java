@@ -31,16 +31,18 @@ public class GunController {
     @Autowired
     GunDescriptionListService gunDescriptionListService;
 
- @GetMapping("/descriptions")
-    public List<GunDescriptionListResponse> getAllGunDescriptions(@RequestParam(required = false)Long id)
+ @GetMapping("/descriptions/{Id}")
+    public GunDescriptionListResponse getGunDescriptions(@PathVariable long Id)
     {
-        List<GunDescriptionList> gunDescriptionLists = gunDescriptionListService.getAllGunDescriptions();
+        /*List<GunDescriptionList> gunDescriptionLists = gunDescriptionListService.getAllGunDescriptions();
 
         List<GunDescriptionListResponse> gunDescriptionListResponse = new ArrayList<>();
         gunDescriptionLists.forEach(gunDescriptionList -> {
             gunDescriptionListResponse.add(new GunDescriptionListResponse(gunDescriptionList));
         });
-        return gunDescriptionListResponse;
+        return gunDescriptionListResponse;*/
+
+        return new GunDescriptionListResponse(gunDescriptionListService.getGunDescriptions(Id));
     }
 
     @Autowired
