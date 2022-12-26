@@ -35,7 +35,7 @@ public class Loadout {
         PrimaryWeapon=loadoutRequest.getPrimaryWeapon();
         SecondaryWeapon=loadoutRequest.getSecondaryWeapon();
         MeleeWeapon=loadoutRequest.getMeleeWeapon();
-        user=loadoutRequest.getUser();
+
     }
 
 }

@@ -14,6 +14,5 @@ public class LoadoutRequest {
     private String secondaryWeapon;
     @NotBlank
     private String meleeWeapon;
-    @NotBlank
-    private User user;
+
 }

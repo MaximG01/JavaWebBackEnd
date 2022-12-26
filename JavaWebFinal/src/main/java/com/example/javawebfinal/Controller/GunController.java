@@ -23,14 +23,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//Take off /
 @RestController
-@RequestMapping("/gunLocker/")
-public class Controller {
+@CrossOrigin("*")
+@RequestMapping("/gunLocker")
+public class GunController {
     @Autowired
     GunDescriptionListService gunDescriptionListService;
 
- @GetMapping("/descriptions/")
+ @GetMapping("/descriptions/{id}")
     public List<GunDescriptionListResponse> getAllGunDescriptions()
     {
         List<GunDescriptionList> gunDescriptionLists = gunDescriptionListService.getAllGunDescriptions();
@@ -40,11 +41,14 @@ public class Controller {
             gunDescriptionListResponse.add(new GunDescriptionListResponse(gunDescriptionList));
         });
         return gunDescriptionListResponse;
+
+
     }
+
     @Autowired
     GunService gunService;
-    @GetMapping("/guns/")
-    public List<GunResponse> getAllGuns()
+    @GetMapping("/guns")
+    public List<GunResponse> getAllGuns(@RequestParam(required = false)Long id)
     {
         List<Guns> guns = gunService.getAllGuns();
 
@@ -57,7 +61,7 @@ public class Controller {
 
     @Autowired
     UserService userService;
-    @GetMapping("/User/")
+    @GetMapping("/User")
     public List<UserResponse> getAllUsers()
     {
         List<User> user = userService.getAllUsers();
@@ -68,7 +72,7 @@ public class Controller {
         });
         return userResponse;
     }
-    @PostMapping("/User/")
+    @PostMapping("/User")
     @ResponseStatus(HttpStatus.CREATED)
     public UserResponse addUser(@Valid @RequestBody UserRequest userRequest){
         User user = userService.insertUser(userRequest);
@@ -77,10 +81,9 @@ public class Controller {
 
     @Autowired
     LoadoutService loadoutService;
-    @Autowired
-    private LoadoutRepository loadoutRepository;
 
-    @GetMapping("/Loadout/")
+
+    @GetMapping("/Loadout")
     public List<LoadoutResponse> getAllLoadouts()
     {
         List<Loadout> loadout = loadoutService.getAllLoadouts();
@@ -91,13 +94,14 @@ public class Controller {
         });
         return loadoutResponse;
     }
-    @PostMapping("/Loadout/")
+    @PostMapping("/Loadout")
     @ResponseStatus(HttpStatus.CREATED)
     public LoadoutResponse addLoadout(@Valid @RequestBody LoadoutRequest loadoutRequest){
         Loadout loadout = loadoutService.insertLoadout(loadoutRequest);
         return new LoadoutResponse(loadout);
     }
-
+    @Autowired
+    private LoadoutRepository loadoutRepository;
     @PutMapping("/Loadout/{id}")
     public Loadout updateLoadout(@PathVariable long loadoutId, @Valid @RequestBody LoadoutRequest loadoutRequest){
         Loadout loadoutToBeUpdated = new Loadout(loadoutRequest);
