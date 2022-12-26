@@ -31,8 +31,8 @@ public class GunController {
     @Autowired
     GunDescriptionListService gunDescriptionListService;
 
- @GetMapping("/descriptions/{id}")
-    public List<GunDescriptionListResponse> getAllGunDescriptions()
+ @GetMapping("/descriptions")
+    public List<GunDescriptionListResponse> getAllGunDescriptions(@RequestParam(required = false)Long id)
     {
         List<GunDescriptionList> gunDescriptionLists = gunDescriptionListService.getAllGunDescriptions();
 
@@ -41,8 +41,6 @@ public class GunController {
             gunDescriptionListResponse.add(new GunDescriptionListResponse(gunDescriptionList));
         });
         return gunDescriptionListResponse;
-
-
     }
 
     @Autowired
