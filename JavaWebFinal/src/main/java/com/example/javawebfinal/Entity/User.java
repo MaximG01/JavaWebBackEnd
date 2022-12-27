@@ -21,6 +21,8 @@ public class User {
 
     @Column(name= "last_name")
     private String LastName;
+    /*@Column(name="Loadout_id")
+    private long LoadoutId;*/
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)  //no delete added to user yet...
     private List<Loadout> loadoutList;
 

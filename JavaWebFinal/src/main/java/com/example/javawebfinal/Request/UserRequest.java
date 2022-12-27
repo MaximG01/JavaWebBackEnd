@@ -15,6 +15,6 @@ public class UserRequest {
     private String firstName;
     @NotBlank
     private String lastName;
-    @NotBlank
+
     private List<Loadout> loadoutList;
 }

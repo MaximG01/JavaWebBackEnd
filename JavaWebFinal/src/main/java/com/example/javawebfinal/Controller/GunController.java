@@ -97,15 +97,21 @@ public class GunController {
     @PostMapping("/Loadout")
     @ResponseStatus(HttpStatus.CREATED)
     public LoadoutResponse addLoadout(@Valid @RequestBody LoadoutRequest loadoutRequest){
-        Loadout loadout = loadoutService.insertLoadout(loadoutRequest);
+        User user = userService.getUser(loadoutRequest.getUserid());
+        Loadout loadout = loadoutService.insertLoadout(loadoutRequest, user);
         return new LoadoutResponse(loadout);
+
     }
     @Autowired
     private LoadoutRepository loadoutRepository;
-    @PutMapping("/Loadout/{id}")
+    @PutMapping("/Loadout/{loadoutId}")
     public Loadout updateLoadout(@PathVariable long loadoutId, @Valid @RequestBody LoadoutRequest loadoutRequest){
+        User user = userService.getUser(loadoutRequest.getUserid());
+        Loadout loadout = loadoutService.updateLoadout(loadoutId, loadoutRequest, user);
+
         Loadout loadoutToBeUpdated = new Loadout(loadoutRequest);
         loadoutToBeUpdated.setId(loadoutId);
+        loadoutToBeUpdated.setUser(user);
         return loadoutRepository.save(loadoutToBeUpdated);
     }
 

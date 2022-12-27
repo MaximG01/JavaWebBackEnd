@@ -1,6 +1,7 @@
 package com.example.javawebfinal.Service;
 
 import com.example.javawebfinal.Entity.Loadout;
+import com.example.javawebfinal.Entity.User;
 import com.example.javawebfinal.Exception.ResourceNotFound;
 import com.example.javawebfinal.Repository.LoadoutRepository;
 import com.example.javawebfinal.Request.LoadoutRequest;
@@ -18,16 +19,19 @@ public class LoadoutService {
         return (List<Loadout>) loadoutRepository.findAll();
     }
 
-    public Loadout insertLoadout(LoadoutRequest loadoutRequest){
-        return loadoutRepository.save(new Loadout(loadoutRequest));
+    public Loadout insertLoadout(LoadoutRequest loadoutRequest, User user){
+        Loadout loadout = new Loadout(loadoutRequest);
+        loadout.setUser(user);
+        return loadoutRepository.save(loadout);
     }
 
-    public Loadout updateLoadout (long loadoutId, LoadoutRequest loadoutRequest){
-        return loadoutRepository.findById(loadoutId).map(loadout -> {
-            Loadout loadoutToBeUpdated = new Loadout(loadoutRequest);
-            loadoutToBeUpdated.setId(loadout.getId());
-            return loadoutRepository.save(loadoutToBeUpdated);
-        }).orElseThrow(()-> new ResourceNotFound("Loadout is not found"));
+    public Loadout updateLoadout (long loadoutId, LoadoutRequest loadoutRequest, User user){
+        Loadout loadout = new Loadout(loadoutRequest);
+        loadout.setUser(user);
+        loadout.setId(loadoutId);
+
+        return loadoutRepository.save(loadout);
+
     }
 
     public void deleteLoadout(long loadoutId){

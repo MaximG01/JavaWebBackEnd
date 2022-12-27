@@ -15,14 +15,11 @@ public class Loadout {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name= "primary_weapon")
-    private String PrimaryWeapon;
+    @Column(name= "weapon")
+    private String Weapon;
 
-    @Column(name= "secondary_weapon")
-    private String SecondaryWeapon;
 
-    @Column(name= "melee_weapon")
-    private String MeleeWeapon;
+
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -32,9 +29,8 @@ public class Loadout {
 
     public Loadout(LoadoutRequest loadoutRequest)
     {
-        PrimaryWeapon=loadoutRequest.getPrimaryWeapon();
-        SecondaryWeapon=loadoutRequest.getSecondaryWeapon();
-        MeleeWeapon=loadoutRequest.getMeleeWeapon();
+        Weapon=loadoutRequest.getWeapon();
+
 
     }
 

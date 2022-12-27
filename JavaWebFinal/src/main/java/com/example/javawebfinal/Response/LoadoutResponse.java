@@ -8,14 +8,11 @@ import lombok.Setter;
 @Setter
 public class LoadoutResponse {
     private long id;
-    private String PrimaryWeapon;
-    private String SecondaryWeapon;
-    private String MeleeWeapon;
+    private String Weapon;
+
 
     public LoadoutResponse(Loadout loadout){
         id=loadout.getId();
-        PrimaryWeapon= loadout.getPrimaryWeapon();
-        SecondaryWeapon=loadout.getSecondaryWeapon();
-        MeleeWeapon=loadout.getMeleeWeapon();
+        Weapon= loadout.getWeapon();
     }
 }

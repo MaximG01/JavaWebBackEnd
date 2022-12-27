@@ -9,10 +9,10 @@ import lombok.Setter;
 @Setter
 public class LoadoutRequest {
     @NotBlank
-    private String primaryWeapon;
-    @NotBlank
-    private String secondaryWeapon;
-    @NotBlank
-    private String meleeWeapon;
+    private String weapon;
+
+    private Long userid;
+
+
 
 }
